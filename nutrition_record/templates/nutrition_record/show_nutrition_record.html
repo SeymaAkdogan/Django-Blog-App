@@ -1,0 +1,63 @@
+{% extends "base.html"%}
+{% load static %}
+{% block content %}
+
+<div class="container my-8">
+  <table class="table border-separate border-spacing-2 border border-slate-400">
+    <thead>
+      <tr>
+        <th class="border border-slate-300">Day</th>
+        <th class="border border-slate-300">Created Date</th>
+        <th class="border border-slate-300">Repast</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in record %}
+      <tr>
+        <td class="border border-slate-300"><span class="font-semibold">{{ i.day }}</span></td>
+        <td class="border border-slate-300"><span class="font-semibold">{{ i.created_at }}</span></td>
+          <td class="border border-slate-300">
+            {% if i.day == 1 %}
+            <ul class="list-group list-group-flush">
+              {% for key,value in repast_items_first.items %}
+              <li class="list-group-item">
+                <span class="font-bold text-red-700">{{ key }} :</span> 
+                <span class="font-semibold">{{ value }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+            {% elif i.day == 2%}
+            <ul class="list-group list-group-flush">
+              {% for key,value in repast_items_second.items %}
+              <li class="list-group-item">
+                <span class="font-bold text-red-700">{{ key }} :</span> 
+                <span class="font-semibold">{{ value }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+            {% elif i.day == 3 %}
+            <ul class="list-group list-group-flush">
+              {% for key,value in repast_items_third.items %}
+              <li class="list-group-item">
+                <span class="font-bold text-red-700">{{ key }} :</span> 
+                <span class="font-semibold">{{ value }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </td>
+
+      </tr>
+
+      {% endfor %}
+
+
+    </tbody>
+  </table>
+
+  <div class="mt-4">
+    <a href="{% url 'createNutritionRecord' %}" class="btn btn-lg ml-12 text-white rounded-none uppercase text-md" style="background-color: #d1612d">Create Record</a>
+  </div>
+</div>
+
+{% endblock %}

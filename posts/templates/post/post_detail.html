@@ -1,0 +1,28 @@
+{% extends "base.html"%}
+{% block content %}
+
+<style>
+  .detail img {
+    float: left;
+    padding: 0 10px 10px 0;
+  }
+</style>
+
+<div class="container xl:mx-20 lg:mx-20 md:mx-20 sm:mx-auto mb-6" style="margin-top:30px;">
+  <h1 class="uppercase font-semibold text-5xl text-center" style="font-family: 'Fira Sans Condensed', sans-serif;">{{ post.title|title }}</h1>
+  <hr class="w-60 text-center mx-auto mb-8" style="color: #EE4000;height: 2px;text-align: center;">
+  <div class="detail">
+    <img src="{{ post.image.url}}" style="height: 450px;width: 597px;">
+    <div class="">
+
+      <span class="text-xs mb-4 text-gray-600">{{ post.created_at|date:"Y-m-d" }}</span>
+      <p class="font-serif text-lg font-medium leading-relaxed pl-4">{{ post.description }}</p>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+{% endblock %}
